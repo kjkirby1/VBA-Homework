@@ -1,0 +1,37 @@
+Sub Ticker()
+
+Dim ws As Worksheet
+For Each ws In ActiveWorkbook.Worksheets
+ws.Activate
+Dim Ticker As String
+Dim TickerTotal As Double
+TickerTotal = 0
+Dim TickerSummary As Integer
+TickerSummary = 2
+
+lastrow = (Range("A999999").End(xlUp).Row)
+For i = 2 To lastrow
+
+If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+Ticker = Cells(i, 1).Value
+TickerTotal = TickerTotal + Cells(i, 7).Value
+Range("I" & TickerSummary).Value = Ticker
+Range("J" & TickerSummary).Value = TickerTotal
+
+TickerSummary = TickerSummary + 1
+
+TickerTotal = 0
+
+Else
+
+TickerTotal = TickerTotal + Cells(i, 7).Value
+End If
+
+Next i
+Cells(1, 9).Value = "Ticker"
+Cells(1, 10).Value = "Ticker Total"
+Next ws
+
+End Sub
+
+
