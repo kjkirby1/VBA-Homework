@@ -29,7 +29,7 @@ End If
 
 Next i
 Cells(1, 9).Value = "Ticker"
-Cells(1, 10).Value = "Ticker Total"
+Cells(1, 10).Value = "Total Stock Volume"
 Next ws
 
 End Sub
